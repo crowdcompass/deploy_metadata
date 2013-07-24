@@ -17,20 +17,22 @@ And then execute:
 E.g., 
 
 helper:
-		def deploy_metadata
-			return '' if Rails.env.production?
 
-			capture_haml do
-				DeployMetadata.current.each_pair do |key, val|
-					haml_tag(:p) do
-						haml_concat "#{key}: #{val}"
-					end
+	def deploy_metadata
+		return '' if Rails.env.production?
+
+		capture_haml do
+			DeployMetadata.current.each_pair do |key, val|
+				haml_tag(:p) do
+					haml_concat "#{key}: #{val}"
 				end
 			end
 		end
+	end
 
 view:
-    = deploy_metadata
+
+	= deploy_metadata
 
 
 ## Contributing
