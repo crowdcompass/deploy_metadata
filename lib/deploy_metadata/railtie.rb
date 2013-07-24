@@ -11,7 +11,7 @@ class DeployMetadata::Railtie < Rails::Railtie
     end
 
     Started = DeployMetadata::Cache.new lambda {
-      Time.now.strftime('%c')
+      Time.now.in_time_zone('Pacific Time (US & Canada)').strftime('%c')
     }
 
     Deployed = DeployMetadata::Cache.new lambda {
@@ -22,7 +22,7 @@ class DeployMetadata::Railtie < Rails::Railtie
       version = nil
       [ Rails.root.join("../../shared/cached-copy/.git"), Rails.root.join(".git") ].each do |appdir|
         if Dir.exists?(appdir)
-          version = `git --git-dir #{appdir} describe --all`.chomp
+          version = `git --git-dir #{appdir} describe --tags`.chomp
           break
         end
       end
