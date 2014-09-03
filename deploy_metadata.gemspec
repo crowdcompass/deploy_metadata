@@ -6,6 +6,11 @@ require 'deploy_metadata/version'
 Gem::Specification.new do |spec|
   spec.name          = "deploy_metadata"
   spec.version       = DeployMetadata::VERSION
+  spec.authors       = ["Ben Cullen-Kerney"]
+  spec.email         = ["ben@beancuke.com"]
+  spec.summary       = %q{Deploys metadata}
+  spec.description   = %q{Records and caches the start time, deploy time (with standard capistrano deploy), and git revision of your running app.}
+  spec.homepage      = ""
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
